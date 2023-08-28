@@ -14,6 +14,14 @@ cos_wave=2*cos(2*pi*cos_freq.*t);       % cos wave
 triangle_wave = triang(200);
 t1=0:0.01:2*pi;
 
+D_unit_step=(t-4)>=0; %delayed unit step
+A_unit_step=(t+4)>=0; % advanced unit step
+I_unit_step=-t>=0; %inverted unit step
+
+D_impulse=(t-4)==0; %delayed impulse
+A_impulse=(t+4)==0; %advanced impulse
+
+
 figure;
 
 subplot(3, 2, 1);
@@ -115,3 +123,50 @@ xlabel('Time');
 ylabel('Amplitude');
 legend('cos1','cos2','cos3');
 grid on;
+
+figure;
+subplot(4,1,1);
+plot(t,unit_step);
+title('unit step signal');
+xlabel('Time');
+ylabel('Amplitude');
+ylim([0 2]);
+
+subplot(4,1,2);
+plot(t,D_unit_step);
+title('Delayed unit step signal');
+xlabel('Time');
+ylabel('Amplitude');
+ylim([0 2]);
+
+subplot(4,1,3);
+plot(t,A_unit_step);
+title('Advance unit step signal');
+xlabel('Time');
+ylabel('Amplitude');
+ylim([0 2]);
+
+subplot(4,1,4);
+plot(t,I_unit_step);
+title('inverted unit step signal');
+xlabel('Time');
+ylabel('Amplitude');
+ylim([0 2]);
+
+figure;
+subplot(3,1,1);
+plot(t,impulse);
+title('Impulse signal');
+xlabel('Time');
+ylabel('Amplitude');
+
+subplot(3,1,2);
+plot(t,D_impulse);
+title('Delayed Impulse signal');
+xlabel('Time');
+ylabel('Amplitude');
+subplot(3,1,3);
+plot(t,A_impulse);
+title('Advance Impulse signal');
+xlabel('Time');
+ylabel('Amplitude');
