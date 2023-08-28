@@ -23,17 +23,28 @@ grid on;
 
 
 %%%%%%%%Natural Response RC Circuits for 3 different Time Constants
-figure;
-t=(0:0.01:30); V0=1;
-C=1; R1=1; R2=5; R3=10;
-Tou1=R1*C; v1=V0*exp(-t/Tou1);
-Tou2=R2*C; v2=V0*exp(-t/Tou2);
-Tou3=R3*C; v3=V0*exp(-t/Tou3);
-plot(t,v1,'black', t,v2,'blue',t,v3,'red');
-legend ('Smallest Tou - fastest', 'Moderate Tou', 'Highest Tou - slowest');
-xlabel('Time');ylabel('RC Natural Response Voltage Amplitudes');
-title('RC Natural Responses with Different Time Constants & System Fastness');
+close all;clc;
+t=0:0.01:50;
+C=1;
+V0=1;
+R1=1;
+Tou1=R1*C;
+R2=5;
+Tou2=R2*C;
+R3=10;
+Tou3=R3*C;
+
+VC1=V0.*exp(-t/Tou1);
+VC2=V0.*exp(-t/Tou2);
+VC3=V0.*exp(-t/Tou3);
+
+plot(t,VC1,'b',t,VC2,'r',t,VC3,'y');
+title('3 diffrent time constants');
+xlabel('Time');
+ylabel('Capacitive Voltage');
+legend('VC1','VC2','VC3');
 grid on;
+
 
 
 %%%%%%%%%Case 2 –Step Response of RC Circuit
