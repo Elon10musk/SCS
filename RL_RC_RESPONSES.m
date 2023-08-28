@@ -1,19 +1,25 @@
 %%%%%%%%%Case 1 –Natural Response of RC Circuit
 
-clc; close all;
-t=(0:0.01:16); V0=1;
-C=1; R=1; Tou=R*C;
-VC=V0*exp(-t/Tou);
-IR=VC/R; iC=-IR;
-subplot(211); plot(t,VC); grid on;
-title ('Capacitive Voltage Graph');
-legend ('Capacitive Voltage');
-xlabel('Time');ylabel('Voltage Amplitude');
-title('RC Circuit Natural Response - Capacitive Voltage');
-subplot(212); plot(t,IR,'red',t,iC,'blue'); grid on;
-xlabel('Time');ylabel('Current Amplitudes');
-title ('Resistive Current and Capacitive Current Graphs');
-legend ('Resistive Current','Capacitive Current');
+t=0:0.01:16;
+R=1;C=1;Tou=R*C;
+V0=1;
+VC=V0.*exp(-t/Tou);
+IR=VC/R;iC=-IR;
+
+subplot(2,1,1);
+plot(t,VC,'b');
+title('Natural response of RC');
+xlabel('Time');
+ylabel('Capacitive Voltage');
+grid on;
+
+subplot(2,1,2);
+plot(t,IR,'g',t,iC,'r');
+title('Natural response of RC');
+xlabel('Time');
+ylabel('current');
+legend('Resistive current','Capacitive current');
+grid on;
 
 
 %%%%%%%%Natural Response RC Circuits for 3 different Time Constants
